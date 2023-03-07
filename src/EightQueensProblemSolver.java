@@ -22,18 +22,26 @@ public class EightQueensProblemSolver {
             setXs(arr, 0, start, n);
             for (int row = 1; row < n; row++) {
                 for (int col = start + 1; col < n; col++) {
-                    if (arr[row][col] == null) {
+                    if (arr[row][col].equals("0")) {
                         arr[row][col] = "Q";
                         setXs(arr, row, col, n);
                     }
                 }
             }
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = 0; j < arr[0].length; j++) {
-                    if (arr[i][j] == null) {
-                        arr[i][j] = "X";
+            for (int row = 1; row < n; row++) {
+                for (int col = start - 1; col >= 0; col--) {
+                    if (arr[row][col].equals("0")) {
+                        arr[row][col] = "Q";
+                        setXs(arr, row, col, n);
                     }
                 }
+            }
+
+            for (String[] theRow : arr) {
+                for (String value : theRow) {
+                    System.out.print(value + " ");
+                }
+                System.out.println();
             }
             System.out.println();
         }
@@ -82,12 +90,6 @@ public class EightQueensProblemSolver {
             arr[i][j] = "X";
             i--;
             j++;
-        }
-        for (String[] theRow : arr) {
-            for (String value : theRow) {
-                System.out.print(value + " ");
-            }
-            System.out.println();
         }
     }
 
